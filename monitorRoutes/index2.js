@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         })
 
         const apiRes = await needle('get', `${API_TEST_URL}?${params}`)
-        const data = apiRes.body
+        data = apiRes.body
 
         t2 = performance.now()
         t3 = t2 - t
