@@ -2,12 +2,15 @@ const url = require('url')
 const express = require('express')
 const router = express.Router()
 const needle = require('needle')
+const { json } = require('express')
 
-const API_BASE_URL = process.env.API_BASE_URL2
-const API_KEY_NAME = process.env.API_KEY_NAME
+const API_BASE_URL = process.env.API_COMMA_URL2
+const API_KEY_NAME = process.env.API_KEY_NAMEC
 const API_KEY_VALUE = process.env.API_KEY_VALUE
 
 router.get('/', async (req, res) => {
+
+    
     try {
         t = performance.now()
         const params = new URLSearchParams({
@@ -16,8 +19,8 @@ router.get('/', async (req, res) => {
         })
 
         const apiRes = await needle('get', `${API_BASE_URL}?${params}`)
-        const data = apiRes.body
-
+        data = apiRes.body
+        
         t2 = performance.now()
         t3 = t2 - t
 
@@ -26,30 +29,26 @@ router.get('/', async (req, res) => {
             console.log(`REQUEST: ${API_BASE_URL}?${params}`)
         }
 
-        if(data.answer == 12)
+        //if
+        if(data.answer == 1)
         {
-            if(data.string == "Contains 12 words")
-            {
-                if(data.error == false)
-                {
-                    data = "URL 2 for WordCount working as expected. Time taken: " + t3.toFixed(2) + " milliseconds."
-                }
-                else{
-                    dataError = data.error
-                    data = "error expected was: false received: " + dataError + ". Time taken: " + t3.toFixed(2) + " milliseconds."
-                }
+            if(data.x == "It was the best of cloud, it was the worst of cloud...")
+            {    
+                data = "URL 2 for CommaCount working as expected. Time taken: " + t3.toFixed(2) + " milliseconds."
             }
             else{
-                dataString = data.string
-                data = "String expected was: Contains 12 words received: " + dataString + ". Time taken: " + t3.toFixed(2) + " milliseconds."
+                dataString = data.x
+                data = "String expected was: It was the best of cloud, it was the worst of cloud... received: " + dataString + ". Time taken: " + t3.toFixed(2) + " milliseconds."
             }
         }
         else{
             dataAnswer = data.answer
-            data = "Answer expected was 12 received: " + dataAnswer + ". Time taken: " + t3.toFixed(2) + " milliseconds."
+            data = "Answer expected was 1 received: " + dataAnswer + ". Time taken: " + t3.toFixed(2) + " milliseconds."
         }
-
+        //console.log(data)
         res.status(200).json(data)
+        //else - same as catch (error)
+
     } catch (error) {
         res.status(500).json({ error })
     }

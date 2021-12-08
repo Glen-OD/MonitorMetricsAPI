@@ -22,6 +22,29 @@ router.get('/', async (req, res) => {
             console.log(`REQUEST: ${API_TEST_URL}?${params}`)
         }
 
+        if(data.answer == 54)
+        {
+            if(data.string == "Contains 54 characters")
+            {
+                if(data.error == false)
+                {
+                    data = "URL 2 for CharCount working as expected. Time taken: " + t3.toFixed(2) + " milliseconds."
+                }
+                else{
+                    dataError = data.error
+                    data = "error expected was: false received: " + dataError + ". Time taken: " + t3.toFixed(2) + " milliseconds."
+                }
+            }
+            else{
+                dataString = data.string
+                data = "String expected was: Contains 54 characters received: " + dataString + ". Time taken: " + t3.toFixed(2) + " milliseconds."
+            }
+        }
+        else{
+            dataAnswer = data.answer
+            data = "Answer expected was 54 received: " + dataAnswer + ". Time taken: " + t3.toFixed(2) + " milliseconds."
+        }
+
         res.status(200).json(data)
     } catch (error) {
         res.status(500).json({ error })
