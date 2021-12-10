@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QUBeditotron3000</title>
+
+<script type="text/javascript">
+
+//import m from './urlHolder.json';
+
+//TODO-Would it be better to have all the proxy's in 1 array?
+//Or better to put them also in a .json file to call from?
+//const wordcountArray = ["/api?text=", "/api2?text="];
+//const charcountArray = ["/test?text=", "/test2?text="];
+var wordLoad = 0;
+var charLoad = 0;
+var andLoad = 0;
+var commaLoad = 0;
+var vowelLoad = 0;
+var avgwordLoad = 0;
+//let wordcountURL = "http://wordcount.editor.qpc.hal.davecutting.uk";
+//let wordcountURL = "http://wordcountapi.40233306.qpc.hal.davecutting.uk";
+//let wordcountURL2 = urlHolder.Wordcount;
+//let charcountURL = "http://charcount.editor.qpc.hal.davecutting.uk";
+//let charcountURL = "http://charcountapi.40233306.qpc.hal.davecutting.uk";
+//let commacountURL = "http://gorestapi.40233306.qpc.hal.davecutting.uk";
+//let vowelcountURL = "http://pythonrestapi.40233306.qpc.hal.davecutting.uk";
+//let andcountURL = "http://rubyrestapi.40233306.qpc.hal.davecutting.uk";
+//let avgwordlengthURL = "http://javarestapi.40233306.qpc.hal.davecutting.uk";
+
+function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
+
+function WordcountTest()
+{
+    fetch("urlTesterHolder.json")
+  .then(response => response.json())
+  .then(json => {if(true)
+    {
+        url = `${json.wordcount}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+        url = `${json.wordcount2}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+    }
+    })    
+}
+
+function CharcountTest()
+{
+    fetch("urlTesterHolder.json")
+  .then(response => response.json())
+  .then(json => {if(true)
+    {
+        url = `${json.charcount}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+        url = `${json.charcount2}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+    }
+    })    
+}
+
+function CommacountTest()
+{
+    fetch("urlTesterHolder.json")
+  .then(response => response.json())
+  .then(json => {if(true)
+    {
+        url = `${json.commacount}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+        url = `${json.commacount2}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+    }
+    })    
+}
+
+function VowelcountTest()
+{
+    fetch("urlTesterHolder.json")
+  .then(response => response.json())
+  .then(json => {if(true)
+    {
+        url = `${json.vowelcount}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+        url = `${json.vowelcount2}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+    }
+    })    
+}
+
+function AndcountTest()
+{
+    fetch("urlTesterHolder.json")
+  .then(response => response.json())
+  .then(json => {if(true)
+    {
+        url = `${json.andcount}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+        url = `${json.andcount2}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+    }
+    })    
+}
+
+function AvgcountTest()
+{
+    fetch("urlTesterHolder.json")
+  .then(response => response.json())
+  .then(json => {if(true)
+    {
+        url = `${json.wordlengthcount}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+        url = `${json.wordlengthcount2}${encodeURI(document.getElementById('content').value)}`;
+            fetch(url)
+        .then(response => response.json())
+        .then(obj => {if(true)
+        {
+            alert(obj);
+        }
+        })
+    }
+    })    
+}
+
+
+function Wordcount(i)
+{
+   // fetch('./urlHolder.json')
+  // .then(response => response.json())
+  // .then(obj => console.log(obj))
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var j = JSON.parse(this.response);
+            document.getElementById('output').value = j.answer;
+            if (j.error == true)
+            {
+                console.log('Error = True. Default value 0 set to screen');
+            }
+
+        }   
+    };
+
+    //check if i=1;
+    //as that means the other api is not working
+
+    fetch("urlHolder.json")
+  .then(response => response.json())
+  .then(json => {if(i == 0)
+  {
+      url = "";
+      if(wordLoad > 0)
+      {
+        url = `${json.wordcount2}${encodeURI(document.getElementById('content').value)}`;
+        wordLoad--;
+      }
+      else{
+        url = `${json.wordcount}${encodeURI(document.getElementById('content').value)}`;
+        wordLoad++;
+      }
+    
+    //xhttp.open("GET",url);
+    //xhttp.send();
+
+
+    //let url = window.wordcount + "/?text=" + encodeURI(document.getElementById('content').value);  
+
+            fetch(url)
+    .then(handleErrors)
+    .then(function(response) {
+        xhttp.open("GET",url);
+        xhttp.send();
+    }).catch(function (error) {
+        Wordcount(1);
+    if (error.response) {
+      // The request was made and the server responded with a status code
+     // console.log('1', error.message);
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      //console.log('2', error.message);
+      console.log(error.request);
+      console.log(error.response.status);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      //console.log('3', error.message);
+      console.log('Error', error.message);
+      console.log('Error status 404');
+    }
+    //console.log('4', error.message);
+    //console.log(error.config);
+  });
+
+    }
+    else{
+        if(wordLoad > 0)
+        {
+            wordLoad = wordLoad + 10;
+            Wordcount(0);
+        }
+        else{
+            wordLoad = wordLoad - 10;
+            Wordcount(0);
+        }
+    }})
+
+   // }
+        
+
+
+}
+
+function Charcount(i)
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var j = JSON.parse(this.response);
+            document.getElementById('output').value = j.answer;
+            if (j.error == true)
+            {
+                console.log('Error = True. Default value 0 set to screen');
+            }
+        }
+    };
+
+    fetch("urlHolder.json")
+  .then(response => response.json())
+  .then(json => {if(i == 0)
+  {
+      url = "";
+      if(charLoad > 0)
+      {
+        url = `${json.charcount2}${encodeURI(document.getElementById('content').value)}`;
+        charLoad--;
+      }
+      else{
+        url = `${json.charcount}${encodeURI(document.getElementById('content').value)}`;
+        charLoad++;
+      }
+    
+            fetch(url)
+    .then(handleErrors)
+    .then(function(response) {
+        xhttp.open("GET",url);
+        xhttp.send();
+    }).catch(function (error) {
+        Charcount(1);
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log(error.request);
+      console.log(error.response.status);
+    } else {
+      console.log('Error', error.message);
+      console.log('Error status 404');
+    }
+  });
+
+    }
+    else{
+        if(charLoad > 0)
+        {
+            charLoad = charLoad + 10;
+            Charcount(0);
+        }
+        else{
+            charLoad = charLoad - 10;
+            Charcount(0);
+        }
+    }})
+
+}
+
+function Vowelcount(i)
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var j = JSON.parse(this.response);
+            document.getElementById('output').value = j.answer;
+        }
+    };
+
+    fetch("urlHolder.json")
+  .then(response => response.json())
+  .then(json => {if(i == 0)
+  {
+      url = "";
+      if(vowelLoad > 0)
+      {
+        url = `${json.vowelcount2}${encodeURI(document.getElementById('content').value)}`;
+        vowelLoad--;
+      }
+      else{
+        url = `${json.vowelcount}${encodeURI(document.getElementById('content').value)}`;
+        vowelLoad++;
+      }
+    
+            fetch(url)
+    .then(handleErrors)
+    .then(function(response) {
+        xhttp.open("GET",url);
+        xhttp.send();
+    }).catch(function (error) {
+        Vowelcount(1);
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log(error.request);
+      console.log(error.response.status);
+    } else {
+      console.log('Error', error.message);
+      console.log('Error status 404');
+    }
+  });
+
+    }
+    else{
+        if(vowelLoad > 0)
+        {
+            vowelLoad = vowelLoad + 10;
+            Vowelcount(0);
+        }
+        else{
+            vowelLoad = vowelLoad - 10;
+            Vowelcount(0);
+        }
+    }})
+}
+
+function Commacount(i)
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var j = JSON.parse(this.response);
+            document.getElementById('output').value = j.answer;
+        }
+    };
+
+    fetch("urlHolder.json")
+  .then(response => response.json())
+  .then(json => {if(i == 0)
+  {
+      url = "";
+      if(commaLoad > 0)
+      {
+        url = `${json.commacount2}${encodeURI(document.getElementById('content').value)}`;
+        commaLoad--;
+      }
+      else{
+        url = `${json.commacount}${encodeURI(document.getElementById('content').value)}`;
+        commaLoad++;
+      }
+    
+            fetch(url)
+    .then(handleErrors)
+    .then(function(response) {
+        xhttp.open("GET",url);
+        xhttp.send();
+    }).catch(function (error) {
+        Commacount(1);
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log(error.request);
+      console.log(error.response.status);
+    } else {
+      console.log('Error', error.message);
+      console.log('Error status 404');
+    }
+  });
+
+    }
+    else{
+        if(commaLoad > 0)
+        {
+            commaLoad = commaLoad + 10;
+            Commacount(0);
+        }
+        else{
+            commaLoad = commaLoad - 10;
+            Commacount(0);
+        }
+    }})
+}
+
+function Andcount(i)
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var j = JSON.parse(this.response);
+            document.getElementById('output').value = j.answer;
+        }
+    };
+
+    fetch("urlHolder.json")
+  .then(response => response.json())
+  .then(json => {if(i == 0)
+  {
+      url = "";
+      if(andLoad > 0)
+      {
+        url = `${json.andcount2}${encodeURI(document.getElementById('content').value)}`;
+        andLoad--;
+      }
+      else{
+        url = `${json.andcount}${encodeURI(document.getElementById('content').value)}`;
+        andLoad++;
+      }
+    
+            fetch(url)
+    .then(handleErrors)
+    .then(function(response) {
+        xhttp.open("GET",url);
+        xhttp.send();
+    }).catch(function (error) {
+        Andcount(1);
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log(error.request);
+      console.log(error.response.status);
+    } else {
+      console.log('Error', error.message);
+      console.log('Error status 404');
+    }
+  });
+
+    }
+    else{
+        if(andLoad > 0)
+        {
+            andLoad = andLoad + 10;
+            Andcount(0);
+        }
+        else{
+            andLoad = andLoad - 10;
+            Andcount(0);
+        }
+    }})
+}
+
+function avgwordlengthcount(i)
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var j = JSON.parse(this.response);
+            document.getElementById('output').value = j.answer;
+        }
+    };
+
+    fetch("urlHolder.json")
+  .then(response => response.json())
+  .then(json => {if(i == 0)
+  {
+      url = "";
+      if(avgwordLoad > 0)
+      {
+        url = `${json.wordlengthcount2}${encodeURI(document.getElementById('content').value)}`;
+        avgwordLoad--;
+      }
+      else{
+        url = `${json.wordlengthcount}${encodeURI(document.getElementById('content').value)}`;
+        avgwordLoad++;
+      }
+    
+            fetch(url)
+    .then(handleErrors)
+    .then(function(response) {
+        xhttp.open("GET",url);
+        xhttp.send();
+    }).catch(function (error) {
+        avgwordlengthcount(1);
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log(error.request);
+      console.log(error.response.status);
+    } else {
+      console.log('Error', error.message);
+      console.log('Error status 404');
+    }
+  });
+
+    }
+    else{
+        if(avgwordLoad > 0)
+        {
+            avgwordLoad = avgwordLoad + 10;
+            avgwordlengthcount(0);
+        }
+        else{
+            avgwordLoad = avgwordLoad - 10;
+            avgwordlengthcount(0);
+        }
+    }})
+}
+
+//define(['require','./urlHolder.json'], function(require) {
+//    
+//    var json = require('./urlHolder.json');
+ //   console.log(json);
+
+
+    //$.getJSON("./urlHolder.json", function(json) {
+    //    console.log(json); // this will show the info it in firebug console
+    //});
+//});
+
+const loadJSON = (callback) => {
+  const xObj = new XMLHttpRequest();
+  xObj.overrideMimeType("application/json");
+  // 1. replace './data.json' with the local path of your file
+  xObj.open('GET', './urlHolder.json', true);
+  xObj.onreadystatechange = () => {
+      if (xObj.readyState === 4 && xObj.status === 200) {
+          // 2. call your callback function
+          callback(xObj.responseText);
+      }
+  };
+  xObj.send(null);
+}
+
+const init = () => {
+  loadJSON((response) => {
+      // 3. parse JSON string into JSON Object
+      console.log('response =', response);
+      const json = JSON.parse(response);
+      console.log('your local JSON =', JSON.stringify(json, null, 4));
+      // 4. render to your page
+      const app = document.querySelector('#app');
+      app.innerHTML = `<pre>${JSON.stringify(json, null, 4)}</pre>`;
+  });
+}
+
+</script>
+
+<script src = "./require.js">
+</script>
+
+<style type="text/css">
+body  {
+    font-size: 150%;
+    font-family: monospace;
+}
+
+#logo
+{
+    font-family: Calibri, sans-serif;
+    font-weight: lighter;
+    color: #505050;
+    margin: 0.5em;
+}
+
+#editor
+{
+    text-align: center;
+    margin-top: 1em;
+}
+
+#output {
+    font-size: 100%;
+    padding: 0.2em;
+    margin: 0.2em;
+    font-family: monospace;
+    letter-spacing: 0.1em;
+}
+
+#content {
+    font-size: 100%;
+    padding: 0.2em;
+    margin: 0.2em;
+    font-family: monospace;
+    letter-spacing: 0.1em;
+}
+
+.operation {
+    border: solid #d0d0d0 1px;
+    background-color: #f0f0f0;
+    padding: 1.5em;
+    margin: 1em;
+    width: 14em;
+}
+</style>
+
+<!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"> -->
+
+
+</head>
+<body>    
+<div id="editor">
+    <div id="logo">
+        QUBeditotron3000
+    </div>
+    <div>
+        <textarea rows="5" cols="40" id="content">It was the best of cloud, it was the worst of cloud...</textarea>
+        <a id="myLink"></a>
+    </div>
+    <div>
+        <input type="text" id="output" readonly="1" value="" />
+    </div>
+    <div>
+        <div class="container">
+        <button id="getData5" class="operation" onclick="Wordcount(0);">Word Count</button>
+        <button id="getData6" class="operation" onclick="Charcount(0);">Character Count</button>
+        </div>
+    </div>
+    <div>
+        <!-- <button class="operation" onclick="Vowelcount();">Vowel Count</button>
+        <button class="operation" onclick="Commacount()">Comma Count</button> -->
+    </div>
+    <div>
+        <div class="container">
+            <button id="getData3" class="operation" onclick="Andcount(0);">And Count</button>
+            <button id="getData4" class="operation" onclick="avgwordlengthcount(0);">Avg Count</button>           
+        </div> 
+    </div>
+    <div>
+        <div class="container">
+            <button id="getData" class="operation" onclick="Commacount(0);">Comma Count</button>
+            <button id="getData2" class="operation" onclick="Vowelcount(0);">Vowel Count</button>        
+            <div id="loader" style="margin-top: 10px; display: none;">
+                <img src="ajax-loader.gif">
+            </div>      
+        </div> 
+    </div>
+    <div>
+        <button class="operation" onclick="WordcountTest();">WordCount Monitor + Metrics</button>
+        <button class="operation" onclick="CharcountTest();">CharCount Monitor + Metrics</button>
+        <button class="operation" onclick="CommacountTest();">CommaCount Monitor + Metrics</button>
+        <button class="operation" onclick="VowelcountTest();">VowelCount Monitor + Metrics</button>
+        <button class="operation" onclick="AndcountTest();">AndCount Monitor + Metrics</button>
+        <button class="operation" onclick="AvgcountTest();">AvgCount Monitor + Metrics</button>
+    </div> 
+</div>  
+
+<script src="jquery-3.6.0.min.js"></script>
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+<script>
+    $(document).ready(function(){
+
+        $("#getData").on("click",function(){
+            fetch("urlHolder.json")
+                .then(response => response.json())
+                .then(json => {if(true)
+                {
+                    url = "";
+                    if(commaLoad == 1 || commaLoad < 0)
+                    {
+                        url = `${json.commacount}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                    else{
+                        url = `${json.commacount2}${encodeURI(document.getElementById('content').value)}`;
+                    }
+           
+                $.ajax({
+                type:"GET",
+                url:url,
+                dataType:"json",
+
+                beforeSend: function(){
+                    $("#loader").show();
+                    $("#getData2").hide();
+                    $("#getData").hide();
+                    $("#getData4").hide();
+                    $("#getData6").hide();
+                    $("#getData3").hide();
+                    $("#getData5").hide();
+                },
+
+                complete: function(){
+                    setTimeout(function(){
+                    $("#loader").hide();
+                    $("#getData2").show();
+                    $("#getData").show();
+                    $("#getData4").show();
+                    $("#getData6").show();
+                    $("#getData3").show();
+                    $("#getData5").show();
+                    },1000);
+                },
+                
+                success: function(data){
+                },
+
+                error: function(){                 
+                }
+            });
+        }})            
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+
+        $("#getData2").on("click",function(){
+            fetch("urlHolder.json")
+                .then(response => response.json())
+                .then(json => {if(true)
+                {
+                    url = "";
+                    if(vowelLoad == 1 || vowelLoad < 0)
+                    {
+                        url = `${json.vowelcount}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                    else{
+                        url = `${json.vowelcount2}${encodeURI(document.getElementById('content').value)}`;
+                    }
+           
+                $.ajax({
+                type:"GET",
+                url:url,
+                dataType:"json",
+
+                beforeSend: function(){
+                    $("#loader").show();
+                    $("#getData2").hide();
+                    $("#getData").hide();
+                    $("#getData4").hide();
+                    $("#getData6").hide();
+                    $("#getData3").hide();
+                    $("#getData5").hide();
+                },
+
+                complete: function(){
+                    setTimeout(function(){
+                    $("#loader").hide();
+                    $("#getData2").show();
+                    $("#getData").show();
+                    $("#getData4").show();
+                    $("#getData6").show();
+                    $("#getData3").show();
+                    $("#getData5").show();
+                    },1000);
+                },
+                
+                success: function(data){
+                },
+
+                error: function(){                 
+                }
+            });
+        }})            
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+
+        $("#getData3").on("click",function(){
+            fetch("urlHolder.json")
+                .then(response => response.json())
+                .then(json => {if(true)
+                {
+                    url = "";
+                    if(andLoad == 1 || andLoad < 0)
+                    {
+                        url = `${json.andcount}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                    else{
+                        url = `${json.andcount2}${encodeURI(document.getElementById('content').value)}`;
+                    }
+           
+                $.ajax({
+                type:"GET",
+                url:url,
+                dataType:"json",
+
+                beforeSend: function(){
+                    $("#loader").show();
+                    $("#getData2").hide();
+                    $("#getData").hide();
+                    $("#getData4").hide();
+                    $("#getData6").hide();
+                    $("#getData3").hide();
+                    $("#getData5").hide();
+                },
+
+                complete: function(){
+                    setTimeout(function(){
+                    $("#loader").hide();
+                    $("#getData2").show();
+                    $("#getData").show();
+                    $("#getData4").show();
+                    $("#getData6").show();
+                    $("#getData3").show();
+                    $("#getData5").show();
+                    },1000);
+                },
+                
+                success: function(data){
+                },
+
+                error: function(){                 
+                }
+            });
+        }})            
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+
+        $("#getData5").on("click",function(){
+
+            fetch("urlHolder.json")
+                .then(response => response.json())
+                .then(json => {if(true)
+                {
+                    url = "";
+                    if(wordLoad == 1 || wordLoad < 0)
+                    {
+                        url = `${json.wordcount}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                    else{
+                        url = `${json.wordcount2}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                                
+                  
+                    $.ajax({
+                    type:"GET",
+                    url:url,
+                    dataType:"json",
+
+                    beforeSend: function(){
+                        $("#loader").show();
+                        $("#getData2").hide();
+                        $("#getData").hide();
+                        $("#getData4").hide();
+                        $("#getData6").hide();
+                        $("#getData3").hide();
+                        $("#getData5").hide();
+                    },
+
+
+                    complete: function(){
+                        setTimeout(function(){
+                        $("#loader").hide();
+                        $("#getData2").show();
+                        $("#getData").show();
+                        $("#getData4").show();
+                        $("#getData6").show();
+                        $("#getData3").show();
+                        $("#getData5").show();
+                        },1000);
+                    },
+                    
+                    success: function(data){
+                            
+
+            
+                    },
+
+                    error: function(){
+                    
+                    }
+                    });
+                }})
+
+        });
+
+
+    });
+</script>
+<script>
+    $(document).ready(function(){
+
+        $("#getData4").on("click",function(){
+    
+
+            fetch("urlHolder.json")
+                .then(response => response.json())
+                .then(json => {if(true)
+                {
+                    url = "";
+                    if(avgwordLoad == 1 || avgwordLoad < 0)
+                    {
+                        url = `${json.wordlengthcount}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                    else{
+                        url = `${json.wordlengthcount2}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                                
+                  
+                    $.ajax({
+                    type:"GET",
+                    url:url,
+                    dataType:"json",
+
+                    beforeSend: function(){
+                        $("#loader").show();
+                        $("#getData2").hide();
+                        $("#getData").hide();
+                        $("#getData4").hide();
+                        $("#getData6").hide();
+                        $("#getData3").hide();
+                        $("#getData5").hide();
+                    },
+
+
+                    complete: function(){
+                        setTimeout(function(){
+                        $("#loader").hide();
+                        $("#getData2").show();
+                        $("#getData").show();
+                        $("#getData4").show();
+                        $("#getData6").show();
+                        $("#getData3").show();
+                        $("#getData5").show();
+                        },1000);
+                    },
+                    
+                    success: function(data){
+                            
+
+            
+                    },
+
+                    error: function(){
+                    
+                    }
+                    });
+                }})
+
+        });
+
+
+    });
+</script>
+<script>
+    $(document).ready(function(){
+
+        $("#getData6").on("click",function(){
+             
+            fetch("urlHolder.json")
+                .then(response => response.json())
+                .then(json => {if(true)
+                {
+                    url = "";
+                    if(charLoad == 1 || charLoad < 0)
+                    {
+                        url = `${json.charcount}${encodeURI(document.getElementById('content').value)}`;
+                    }
+                    else{
+                        url = `${json.charcount2}${encodeURI(document.getElementById('content').value)}`;
+                    }
+           
+                $.ajax({
+                type:"GET",
+                url:url,
+                dataType:"json",
+
+                beforeSend: function(){
+                    $("#loader").show();
+                    $("#getData2").hide();
+                    $("#getData").hide();
+                    $("#getData4").hide();
+                    $("#getData6").hide();
+                    $("#getData3").hide();
+                    $("#getData5").hide();
+                },
+
+                complete: function(){
+                    setTimeout(function(){
+                    $("#loader").hide();
+                    $("#getData2").show();
+                    $("#getData").show();
+                    $("#getData4").show();
+                    $("#getData6").show();
+                    $("#getData3").show();
+                    $("#getData5").show();
+                    },1000);
+                },
+                
+                success: function(data){
+                },
+
+                error: function(){                 
+                }
+            });
+        }})            
+        });
+    });
+</script> 
+</body>
+
+
+</html>

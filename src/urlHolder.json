@@ -1,0 +1,14 @@
+{
+    "wordcount": "/api?text=",
+    "wordcount2": "/api2?text=",
+    "charcount": "/char?text=",
+    "charcount2": "/char2?text=",
+    "commacount": "/comma?key=",
+    "commacount2": "/comma2?key=",
+    "vowelcount": "/vowel?x=",
+    "vowelcount2": "/vowel2?x=",
+    "andcount": "/and?x=",
+    "andcount2": "/and2?x=",
+    "wordlengthcount": "/avgword?sentence=",
+    "wordlengthcount2": "/avgword2?sentence="
+}

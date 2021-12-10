@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8080
 
 const app = express()
 
-app.use(express.static('../editor-frontend/src'))
+app.use(express.static('./src'))
 
 app.set('trust proxy', 1)
    
