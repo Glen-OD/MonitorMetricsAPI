@@ -15,12 +15,38 @@ router.get('/', async (req, res) => {
         })
 
         const apiRes = await needle('get', `${API_BASE_URL}?${params}`)
-        const data = apiRes.body
+        data = apiRes.body
 
         //logging request to the console
         if(process.env.NODE_ENV !== 'production'){
             console.log(`REQUEST: ${API_BASE_URL}?${params}`)
         }
+
+        if(data.answer == 12)
+        {
+            if(data.string == "Contains 12 words")
+            {
+                if(data.error == false)
+                {
+                    data = "URL 1 for WordCount working as expected. Time taken: "
+                }
+                else{
+                    dataError = data.error
+                    data = "error expected was: false received: " + dataError + ". Time taken: "
+                }
+            }
+            else{
+                dataString = data.string
+                data = "String expected was: Contains 12 words received: " + dataString + ". Time taken: "
+            }
+        }
+        else{
+            dataAnswer = data.answer
+            data = "Answer expected was 12 received: " + dataAnswer + ". Time taken: "
+        }
+
+
+
         res.status(200).json(data)
     } catch (error) {
         res.status(500).json({ error })
