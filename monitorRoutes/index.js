@@ -9,6 +9,8 @@ const API_KEY_VALUE = process.env.API_KEY_VALUE
 
 router.get('/', async (req, res) => {
     try {
+        t = performance.now()
+
         const params = new URLSearchParams({
             [API_KEY_NAME]: API_KEY_VALUE,
             ...url.parse(req.url, true).query
@@ -16,6 +18,9 @@ router.get('/', async (req, res) => {
 
         const apiRes = await needle('get', `${API_BASE_URL}?${params}`)
         data = apiRes.body
+
+        t2 = performance.now()
+        t3 = t2 - t
 
         //logging request to the console
         if(process.env.NODE_ENV !== 'production'){
