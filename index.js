@@ -9,7 +9,7 @@ const app = express()
 app.use(express.static('./src'))
 
 app.set('trust proxy', 1)
-   
+
 
 app.use('/apiTest', require('./monitorRoutes/index'))
 app.use('/api2Test', require('./monitorRoutes/indexv2'))

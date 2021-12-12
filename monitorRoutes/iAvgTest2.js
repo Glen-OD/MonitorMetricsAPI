@@ -9,7 +9,7 @@ const API_KEY_NAME = process.env.API_KEY_NAMEAV
 const API_KEY_VALUE = process.env.API_KEY_VALUE
 
 router.get('/', async (req, res) => {
-
+    res.header("Access-Control-Allow-Origin", "*");
     
     try {
         t = performance.now()
