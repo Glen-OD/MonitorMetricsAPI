@@ -19,6 +19,7 @@ app.use(express.json());
 app.set('trust proxy', 1)
 
 app.post('/MonitorStore', (request, response) => {
+    response.header("Access-Control-Allow-Origin", "*");
     console.log('Saving text');
     const data = request.body;
     database2.insert(data);
@@ -27,6 +28,7 @@ app.post('/MonitorStore', (request, response) => {
 });
 
 app.post('/getTester', (request, response) => {
+    response.header("Access-Control-Allow-Origin", "*");
     console.log("giving out text");
     //console.log(request.body);
     database2.find({}, (err, data) => {
