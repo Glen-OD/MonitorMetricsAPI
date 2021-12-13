@@ -6,9 +6,39 @@ const PORT = process.env.PORT || 8080
 
 const app = express()
 
+const Datastore = require('nedb');
+const { response } = require('express');
+const req = require('express/lib/request');
+
 app.use(express.static('./src'))
 
+const database2 = new Datastore('Monidatabase.db');
+database2.loadDatabase();
+
+app.use(express.json());
 app.set('trust proxy', 1)
+
+app.post('/MonitorStore', (request, response) => {
+    console.log('Saving text');
+    const data = request.body;
+    database2.insert(data);
+    response.end();
+    return;
+});
+
+app.post('/getTester', (request, response) => {
+    console.log("giving out text");
+    //console.log(request.body);
+    database2.find({}, (err, data) => {
+        if(err) {
+            console.log("Error: + " + request.body);
+            response.end();
+            return;
+        }
+        response.json(data);
+    })
+    
+})
 
 
 app.use('/apiTest', require('./monitorRoutes/index'))

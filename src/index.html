@@ -34,6 +34,8 @@ function handleErrors(response) {
     return response;
 }
 
+
+
 function WordcountTest()
 {
     fetch("urlTesterHolder.json")
@@ -46,6 +48,15 @@ function WordcountTest()
         .then(obj => {if(true)
         {
             alert(obj);
+            const data = {obj};
+            const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        const response = fetch('/MonitorStore', options);
         }
         })
         url = `${json.wordcount2}${encodeURI(document.getElementById('content').value)}`;
@@ -54,11 +65,21 @@ function WordcountTest()
         .then(obj => {if(true)
         {
             alert(obj);
+            const data2 = {obj};
+            const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data2)
+        };
+        const response = fetch('/MonitorStore', options);
         }
         })
     }
     })    
 }
+
 
 function CharcountTest()
 {
